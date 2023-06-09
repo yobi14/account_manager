@@ -9,6 +9,7 @@ class Account {
   int createTime; //创建日期，毫秒级时间戳
   bool nameCanSee = true;
   bool passwordCanSee = false;
+  bool onlyShowTitle = true; //true：列表仅显示标题（前提是有标题）；false：显示所有内容
   Account();
 
   Map toJson() {

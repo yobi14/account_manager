@@ -36,4 +36,6 @@ class Event {
   static const String addAccount = "1";//添加新账号
   static const String refreshList = "2";//刷新列表
   static const String decryptSuccess = "3"; //解密成功
+  static const String onlyShowTitle = "4"; //账号列表仅显示标题
+  static const String showAll = "5"; //账号列表显示所有内容
 }

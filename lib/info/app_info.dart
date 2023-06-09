@@ -232,4 +232,10 @@ class AppInfo{
       return 1;
     }
   }
+
+  void onlyShowTitle(bool onlyShowTitle){
+    for(int i=0; i<_accountList.length; i++){
+      _accountList[i].onlyShowTitle = onlyShowTitle;
+    }
+  }
 }

@@ -146,6 +146,7 @@ class _AddPage extends State<AddPage>{
                    newAccount.password = this.password;
                    newAccount.note = this.note;
                    newAccount.createTime = currentTimeMillis();
+                   newAccount.onlyShowTitle = false;
                    callback(newAccount);
                  }
                  Navigator.pop(context);

@@ -1,5 +1,6 @@
 
 
+import 'package:account_manager/widget/check_widget.dart';
 import 'package:account_manager/widget/edit_input_field.dart';
 import 'package:account_manager/widget/round_input_field.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,6 +33,7 @@ class _SetPage extends State<SetPage>{
   String importPassword = "";
   double vSpace1 = 20;
   double vSpace2 = 20;
+  bool onlyShowTitle = true;
   void initState(){
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -180,6 +182,25 @@ class _SetPage extends State<SetPage>{
                 }
               },
             ),
+            SizedBox(height: vSpace1,),
+            getDivider(),
+            SizedBox(height: vSpace2,),
+            Center(
+              child:  CheckWidget(value: onlyShowTitle,width: MediaQuery.of(context).size.width*0.8,
+                icon:Icon(Icons.check_box_outline_blank,color: Colors.grey,) ,
+                selectIcon: Icon(Icons.check_box, color: Colors.green,),text: '账号列表仅显示标题',press: (value){
+                  setState(() {
+                    this.onlyShowTitle = value;
+                    if(this.onlyShowTitle){
+                      EventBusManager.eventBus.fire(ValueChangeEvent(Event.onlyShowTitle));
+                    }else{
+                      EventBusManager.eventBus.fire(ValueChangeEvent(Event.showAll));
+                    }
+                  });
+                },
+              ),
+            ),
+
             SizedBox(height: 80,),
           ],
         ),
@@ -340,6 +361,6 @@ class _SetPage extends State<SetPage>{
     }
   }
   Widget getDivider(){
-    return Divider(height: 1.5,indent: 30.0, endIndent:30, color: Colors.black,);
+    return Divider(height: 3,indent: MediaQuery.of(context).size.width*0.1, endIndent:MediaQuery.of(context).size.width*0.1, color: Colors.black,);
   }
 }

@@ -301,7 +301,7 @@ class AccountListPage extends StatefulWidget {
 }
 
 class _AccountListPage extends State<AccountListPage>{
-  bool onlyShowTitle = false; //true：列表仅显示标题（前提是有标题）；false：显示所有内容
+
   void initState(){
     super.initState();
     init();
@@ -329,6 +329,14 @@ class _AccountListPage extends State<AccountListPage>{
         addAccount();
       }else if(event.value == Event.refreshList){
         setState(() {
+        });
+      }else if(event.value == Event.onlyShowTitle){
+        setState(() {
+          AppInfo.instance.onlyShowTitle(true);
+        });
+      }else if(event.value == Event.showAll){
+        setState(() {
+          AppInfo.instance.onlyShowTitle(false);
         });
       }
     });
@@ -432,9 +440,9 @@ class _AccountListPage extends State<AccountListPage>{
                 color: Color(0x00000000),//分割线颜色
               ),
           itemBuilder: (context, index) {
-            return ItemAccount(index:index, account:AppInfo.instance.getAccountList()[index],onlyShowTitle:this.onlyShowTitle,
+            return ItemAccount(index:index, account:AppInfo.instance.getAccountList()[index],onlyShowTitle:AppInfo.instance.getAccountList()[index].onlyShowTitle,
               numPress:(){
-                this.onlyShowTitle = !this.onlyShowTitle;
+                AppInfo.instance.getAccountList()[index].onlyShowTitle = !AppInfo.instance.getAccountList()[index].onlyShowTitle;
                 setState(() {});
               },
               copyAllPress: (a){
