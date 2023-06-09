@@ -457,7 +457,7 @@ class _AccountListPage extends State<AccountListPage>{
                 Clipboard.setData(ClipboardData(text: a.name));
                 toastShort("账号已复制到剪切板");
               },copyPasswordPress: (a){
-                Clipboard.setData(ClipboardData(text: a.name));
+                Clipboard.setData(ClipboardData(text: a.password));
                 toastShort("密码已复制到剪切板");
               },morePress: (){
                 setState(() {});
